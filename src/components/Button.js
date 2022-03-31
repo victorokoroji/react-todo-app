@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-const Button = (type, onClick, children) => {
+const Button = ({type, onClick, children}) => {
   return (
     <button type={type} onClick={onClick}>{children}</button>
   )

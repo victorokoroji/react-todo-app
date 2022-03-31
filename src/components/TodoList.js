@@ -2,7 +2,10 @@ import React, { Component } from 'react'
 import TodoItem from './TodoItem'
 
 class TodoList extends Component {
-	render({ todos, handlePropsChange, handleDelete }) {
+  render() {
+    const {
+			todos, handlePropsChange, handleDelete
+		} = this.props
 		return (
 			<ul>
 				{todos.map(todo => {

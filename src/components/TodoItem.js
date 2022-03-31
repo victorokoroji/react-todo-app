@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import Button from './Button'
 import Input from './Input'
 class TodoItem extends Component {
-	render({ todo, handlePropsChange, handleDelete }) {
+  render() {
+    const { todo, handlePropsChange, handleDelete } = this.props
 		return (
 			<li>
 				<Input

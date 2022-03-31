@@ -67,7 +67,7 @@ class App extends Component {
 		return (
 			<div>
 				<Header />
-				{/* <InputTodo addTodoProps={this.addTodoItem} /> */}
+				<InputTodo addTodoProps={this.addTodoItem} />
 				<TodoList
 					todos={this.state.todos}
 					handlePropsChange={this.handleChange}
