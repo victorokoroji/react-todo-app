@@ -9,17 +9,17 @@ class App extends Component {
 	state = {
 		todos: [
 			{
-				id: uuidv4(),
+				id: 1,
 				title: 'Setup development environment',
 				completed: true,
 			},
 			{
-				id: uuidv4(),
+				id: 2,
 				title: 'Develop website and add content',
 				completed: false,
 			},
 			{
-				id: uuidv4(),
+				id: 3,
 				title: 'Deploy to live server',
 				completed: false,
 			},
@@ -65,6 +65,7 @@ class App extends Component {
 
 	render() {
 		return (
+
 			<div>
 				<Header />
 				<InputTodo addTodoProps={this.addTodoItem} />
