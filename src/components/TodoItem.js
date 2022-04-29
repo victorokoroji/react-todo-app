@@ -2,7 +2,7 @@ import React from 'react'
 import Button from './Button'
 import Input from './Input'
 
-const TodoItem = ({ todo, handlePropsChange }) => {
+const TodoItem = ({ todo, handlePropsChange, deleteTodoProps }) => {
 	return (
 		<>
 			<Input
@@ -12,7 +12,7 @@ const TodoItem = ({ todo, handlePropsChange }) => {
 				onChange={() => handlePropsChange(todo.id)}
 			/>
 			<li>{todo.title}</li>
-			<Button type='button'/>
+			<Button type='button' onClick={() => deleteTodoProps(todo.id)}>Delete</Button>
 		</>
 	)
 }

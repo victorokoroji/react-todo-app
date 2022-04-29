@@ -3,7 +3,7 @@ import TodoItem from './TodoItem'
 
 class TodoList extends Component {
 	render() {
-		const { todos, handlePropsChange, handleDelete } = this.props
+		const { todos, handlePropsChange, deleteTodoProps } = this.props
 		return (
 			<ul>
 				{todos.map(todo => (
@@ -11,7 +11,7 @@ class TodoList extends Component {
 						key={todo.id}
 						todo={todo}
 						handlePropsChange={handlePropsChange}
-						// handleDelete={handleDelete}
+						deleteTodoProps={deleteTodoProps}
 					/>
 				))}
 			</ul>

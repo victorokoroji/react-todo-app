@@ -39,7 +39,7 @@ class App extends Component {
 		}))
 	}
 
-	delTodo = () => {
+	delTodo = id => {
 		this.setState({
 			todos: [...this.state.todos.filter(todo => todo.id !== id)],
 		})
@@ -74,7 +74,7 @@ class App extends Component {
 				<TodoList
 					todos={this.state.todos}
 					handlePropsChange={this.handleChange}
-					// handleDelete={this.delTodo}
+					deleteTodoProps={this.delTodo}
 				/>
 			</div>
 		)

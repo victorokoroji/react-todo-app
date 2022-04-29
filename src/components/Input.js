@@ -28,7 +28,7 @@ Input.propTypes = {
 Input.defaultProps = {
 	placeholder: null,
 	checked: null,
-	value: null,
+	value: '',
 }
 
 export default Input
