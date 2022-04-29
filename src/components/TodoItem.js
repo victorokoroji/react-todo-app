@@ -4,6 +4,7 @@ import Input from './Input'
 import styles from './TodoItem.module.css'
 
 const TodoItem = ({ todo, handlePropsChange, deleteTodoProps }) => {
+	const { completed, id, title } = todo
 	const completedStyle = {
 		fontStyle: 'italic',
 		color: '#595959',
@@ -19,14 +20,12 @@ const TodoItem = ({ todo, handlePropsChange, deleteTodoProps }) => {
 					className={styles.checkbox}
 					s
 					checked={todo.completed}
-					onChange={() => handlePropsChange(todo.id)}
+					onChange={() => handlePropsChange(id)}
 				/>
-				<Button type='button' onClick={() => deleteTodoProps(todo.id)}>
+				<Button type='button' onClick={() => deleteTodoProps(id)}>
 					Delete
 				</Button>
-				<span style={this.props.todo.completed ? completedStyle : null}>
-					{this.props.todo.title}
-				</span>
+				<span style={completed ? completedStyle : null}>{title}</span>
 			</li>
 		</>
 	)
