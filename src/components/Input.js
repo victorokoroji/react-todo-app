@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Input = ({ type, name, onChange, placeholder, value }) => {
+const Input = ({ type, name, onChange, placeholder, value, checked }) => {
 	return (
 		<div>
 			<input
@@ -10,6 +10,7 @@ const Input = ({ type, name, onChange, placeholder, value }) => {
 				onChange={onChange}
 				placeholder={placeholder}
 				value={value}
+				checked={checked}
 			/>
 		</div>
 	)
@@ -18,9 +19,15 @@ const Input = ({ type, name, onChange, placeholder, value }) => {
 Input.propTypes = {
 	type: PropTypes.string.isRequired,
 	name: PropTypes.string.isRequired,
-	placeholder: PropTypes.string.isRequired,
+	placeholder: PropTypes.string,
 	value: PropTypes.string.isRequired,
 	onChange: PropTypes.func.isRequired,
+	checked: PropTypes.bool
+}
+
+Input.defaultProps = {
+	placeholder: null,
+	checked: null,
 }
 
 export default Input

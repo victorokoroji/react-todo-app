@@ -10,7 +10,7 @@ class TodoList extends Component {
 					<TodoItem
 						key={todo.id}
 						todo={todo}
-						// handlePropsChange={handlePropsChange}
+						handlePropsChange={handlePropsChange}
 						// handleDelete={handleDelete}
 					/>
 				))}

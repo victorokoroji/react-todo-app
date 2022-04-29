@@ -25,21 +25,16 @@ class App extends Component {
 		],
 	}
 
-	// handleChange = id => {
-	// 	this.setState(prevState => {
-	// 		return {
-	// 			todos: prevState.todos.map(todo => {
-	// 				if (todo.id === id) {
-	// 					return {
-	// 						...todo,
-	// 						completed: !todo.completed,
-	// 					}
-	// 				}
-	// 				return todo
-	// 			}),
-	// 		}
-	// 	})
-	// }
+	handleChange = id => {
+		this.setState({
+			todos: this.state.todos.map(todo => {
+				if (todo.id === id) {
+					todo.completed = !todo.completed
+				}
+				return todo
+			}),
+		})
+	}
 
 	// delTodo = id => {
 	// 	this.setState({
@@ -69,7 +64,7 @@ class App extends Component {
 				{/* <InputTodo addTodoProps={this.addTodoItem} /> */}
 				<TodoList
 					todos={this.state.todos}
-					// handlePropsChange={this.handleChange}
+					handlePropsChange={this.handleChange}
 					// handleDelete={this.delTodo}
 				/>
 			</div>
