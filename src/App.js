@@ -26,14 +26,17 @@ class App extends Component {
 	}
 
 	handleChange = id => {
-		this.setState({
-			todos: this.state.todos.map(todo => {
+		this.setState(prevState => ({
+			todos: prevState.todos.map(todo => {
 				if (todo.id === id) {
-					todo.completed = !todo.completed
+					return {
+						...todo,
+						completed: !todo.completed,
+					}
 				}
 				return todo
 			}),
-		})
+		}))
 	}
 
 	// delTodo = id => {
