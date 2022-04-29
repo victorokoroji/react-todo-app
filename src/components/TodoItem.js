@@ -1,4 +1,5 @@
 import React from 'react'
+import Button from './Button'
 import Input from './Input'
 
 const TodoItem = ({ todo, handlePropsChange }) => {
@@ -11,6 +12,7 @@ const TodoItem = ({ todo, handlePropsChange }) => {
 				onChange={() => handlePropsChange(todo.id)}
 			/>
 			<li>{todo.title}</li>
+			<Button type='button'/>
 		</>
 	)
 }

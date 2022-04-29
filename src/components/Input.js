@@ -20,14 +20,15 @@ Input.propTypes = {
 	type: PropTypes.string.isRequired,
 	name: PropTypes.string.isRequired,
 	placeholder: PropTypes.string,
-	value: PropTypes.string.isRequired,
+	value: PropTypes.string,
 	onChange: PropTypes.func.isRequired,
-	checked: PropTypes.bool
+	checked: PropTypes.bool,
 }
 
 Input.defaultProps = {
 	placeholder: null,
 	checked: null,
+	value: null,
 }
 
 export default Input
