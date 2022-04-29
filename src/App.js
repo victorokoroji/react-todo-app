@@ -60,14 +60,16 @@ class App extends Component {
 
 	render() {
 		return (
-			<div>
-				<Header />
-				<InputTodo addTodoProps={this.addTodoItem} />
-				<TodoList
-					todos={this.state.todos}
-					handlePropsChange={this.handleChange}
-					deleteTodoProps={this.delTodo}
-				/>
+			<div className='container'>
+				<div className='inner'>
+					<Header />
+					<InputTodo addTodoProps={this.addTodoItem} />
+					<TodoList
+						todos={this.state.todos}
+						handlePropsChange={this.handleChange}
+						deleteTodoProps={this.delTodo}
+					/>
+				</div>
 			</div>
 		)
 	}
