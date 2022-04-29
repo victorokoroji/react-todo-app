@@ -4,21 +4,22 @@ import React, { Component } from 'react'
 import Header from './components/Header'
 import TodoList from './components/TodoList'
 import InputTodo from './components/InputTodo'
+import { v4 as uuid } from 'uuid'
 class App extends Component {
 	state = {
 		todos: [
 			{
-				id: 1,
+				id: uuid(),
 				title: 'Setup development environment',
 				completed: true,
 			},
 			{
-				id: 2,
+				id: uuid(),
 				title: 'Develop website and add content',
 				completed: false,
 			},
 			{
-				id: 3,
+				id: uuid(),
 				title: 'Deploy to live server',
 				completed: false,
 			},
@@ -45,32 +46,23 @@ class App extends Component {
 		})
 	}
 
-	// delTodo = id => {
-	// 	this.setState({
-	// 		todos: [
-	// 			...this.state.todos.filter(todo => {
-	// 				return todo.id !== id
-	// 			}),
-	// 		],
-	// 	})
-	// }
+	addTodoItem = title => {
+		const newTodo = {
+			id: uuid(),
+			title: title,
+			completed: false,
+		}
 
-	// addTodoItem = title => {
-	// 	const newTodo = {
-	// 		id: uuidv4(),
-	// 		title: title,
-	// 		completed: false,
-	// 	}
-	// 	this.setState({
-	// 		todos: [...this.state.todos, newTodo],
-	// 	})
-	// }
+		this.setState({
+			todos: [...this.state.todos, newTodo],
+		})
+	}
 
 	render() {
 		return (
 			<div>
 				<Header />
-				{/* <InputTodo addTodoProps={this.addTodoItem} /> */}
+				<InputTodo addTodoProps={this.addTodoItem} />
 				<TodoList
 					todos={this.state.todos}
 					handlePropsChange={this.handleChange}

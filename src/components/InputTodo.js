@@ -35,7 +35,7 @@ class InputTodo extends Component {
 					value={this.state.title}
 					onChange={this.handleInput}
 				/>
-				<Button type='button'>Submit</Button>
+				<Button type='submit'>Submit</Button>
 			</form>
 		)
 	}
