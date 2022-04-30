@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './App.css'
 import Header from './functionBased/components/Header'
 import { v4 as uuid } from 'uuid'
@@ -16,6 +16,7 @@ const App = () => {
 						completed: !completed,
 					}
 				}
+				return todo
 			})
 		})
 	}
@@ -26,9 +27,32 @@ const App = () => {
 			title: title,
 			completed: false,
 		}
-
 		setTodos([...todos, newTodo])
 	}
+
+	const delTodo = id => {
+		setTodos([...todos.filter(todo => todo.id !== id)])
+	}
+
+	const setUpdate = (updatedTitle, id) => {
+		setTodos(
+			todos.map(todo => {
+				if (todo.id === id) {
+					todo.title = updatedTitle
+				}
+				return todo
+			}),
+		)
+	}
+
+	useEffect(() => {
+		first
+	
+		return () => {
+			second
+		}
+	}, [third])
+	
 
 	return (
 		<div className='container'>
@@ -38,8 +62,8 @@ const App = () => {
 				<TodoList
 					todos={todos}
 					handlePropsChange={handleChange}
-					deleteTodoProps={this.delTodo}
-					setUpdate={this.setUpdate}
+					deleteTodoProps={delTodo}
+					setUpdate={setUpdate}
 				/>
 			</div>
 		</div>
@@ -48,55 +72,6 @@ const App = () => {
 
 export default App
 
-// import InputTodo from './functionBased/components/InputTodo'
-
-// class App extends Component {
-
-// 	handleChange = id => {
-// 		this.setState(prevState => ({
-// 			todos: prevState.todos.map(todo => {
-// 				if (todo.id === id) {
-// 					return {
-// 						...todo,
-// 						completed: !todo.completed,
-// 					}
-// 				}
-// 				return todo
-// 			}),
-// 		}))
-// 	}
-
-// 	delTodo = id => {
-// 		this.setState({
-// 			todos: [...this.state.todos.filter(todo => todo.id !== id)],
-// 		})
-// 	}
-
-// 	addTodoItem = title => {
-// 		const newTodo = {
-// 			id: uuid(),
-// 			title: title,
-// 			completed: false,
-// 		}
-
-// 		this.setState({
-// 			todos: [...this.state.todos, newTodo],
-// 		})
-// 	}
-
-// 	setUpdate = (updatedTitle, id) => {
-// 		this.setState(prevState => ({
-// 			todos: prevState.todos.map(todo => {
-// 				if (todo.id === id) {
-// 					return {
-// 						...todo,
-// 						title: updatedTitle,
-// 					}
-// 				}
-// 				return todo
-// 			}),
-// 		}))
-// 	}
 
 // 	componentDidUpdate(prevProps, prevState) {
 // 		if (prevState.todos !== this.state.todos) {
