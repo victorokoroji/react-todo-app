@@ -2,18 +2,25 @@ import React, { useState } from 'react'
 import Button from './Button'
 import Input from './Input'
 
-const InputTodo = () => {
-	const [title, setTitle] = useState('')
+const InputTodo = ({ addTodoProps }) => {
+	const [InputTitle, setTitle] = useState({
+		title: '',
+	})
 
 	const handleInput = () => {
-		setTitle(e.target.value)
+		setTitle({
+			...InputTitle,
+			[e.target.name]: e.target.value,
+		})
 	}
 
 	const handleSubmit = e => {
 		e.preventDefault()
-		if (title.trim()) {
-			addTodoProps(title)
-			setTitle('')
+		if (InputTitle.title.trim()) {
+			addTodoProps(InputTitle.title)
+			setInputText({
+				title: '',
+			})
 		} else {
 			alert('Please write item')
 		}
@@ -26,7 +33,7 @@ const InputTodo = () => {
 				className='input-text'
 				placeholder='Add Todo...'
 				name='title'
-				value={title}
+				value={InputTitle}
 				onChange={handleInput}
 			/>
 			<Button type='submit' className='input-submit'>
