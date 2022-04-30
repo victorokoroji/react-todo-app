@@ -58,18 +58,24 @@ class App extends Component {
 		})
 	}
 
-	setUpdate = (id, title) => {
+	setUpdate = (updatedTitle, id) => {
 		this.setState(prevState => ({
 			todos: prevState.todos.map(todo => {
 				if (todo.id === id) {
 					return {
 						...todo,
-						title,
+						title: updatedTitle,
 					}
 				}
 				return todo
 			}),
 		}))
+	}
+
+	handleUpdatedDone = event => {
+		if (event.key === 'Enter') {
+			this.setState({ editing: false })
+		}
 	}
 
 	render() {
