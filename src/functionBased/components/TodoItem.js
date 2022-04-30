@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Button from './Button'
 import Input from './Input'
 import styles from './TodoItem.module.css'
+import { FaTrash } from 'react-icons/fa'
 
 const TodoItem = ({ todo, handleChangeProps, deleteTodoProps }) => {
 	const { completed, id, title } = todo
@@ -43,7 +44,9 @@ const TodoItem = ({ todo, handleChangeProps, deleteTodoProps }) => {
 					checked={completed}
 					onChange={() => handleChangeProps(id)}
 				/>
-				<Button onClick={() => deleteTodoProps(id)}>Delete</Button>
+				<Button onClick={() => deleteTodoProps(id)}>
+					<FaTrash style={{ color: 'orangered', fontSize: '16px' }} />
+				</Button>
 				<span style={completed ? completedStyle : null}>{title}</span>
 			</div>
 			<Input

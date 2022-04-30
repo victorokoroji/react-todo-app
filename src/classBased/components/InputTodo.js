@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Button from './Button'
 import Input from './Input'
+import { FaPlusCircle} from 'react-icons/fa'
 
 class InputTodo extends Component {
 	state = {
@@ -37,7 +38,7 @@ class InputTodo extends Component {
 					onChange={this.handleInput}
 				/>
 				<Button type='submit' className='input-submit'>
-					Submit
+					<FaPlusCircle />
 				</Button>
 			</form>
 		)
