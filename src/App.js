@@ -5,7 +5,7 @@ import { v4 as uuid } from 'uuid'
 import TodoList from './functionBased/components/TodoList'
 
 const App = () => {
-	const [todos, setTodos] = useState([])
+	const [todos, setTodos] = useState(getInitialTodos())
 
 	const handleChange = id => {
 		setTodos(prevState => {
@@ -45,14 +45,14 @@ const App = () => {
 		)
 	}
 
+	function getInitialTodos() {
+		const savedTodos = JSON.parse(localStorage.getItem('todos'))
+		return savedTodos || []
+	}
+
 	useEffect(() => {
-		first
-	
-		return () => {
-			second
-		}
-	}, [third])
-	
+		localStorage.setItem('todos', JSON.stringify(todos))
+	}, [todos])
 
 	return (
 		<div className='container'>
@@ -71,24 +71,6 @@ const App = () => {
 }
 
 export default App
-
-
-// 	componentDidUpdate(prevProps, prevState) {
-// 		if (prevState.todos !== this.state.todos) {
-// 			const temp = JSON.stringify(this.state.todos)
-// 			localStorage.setItem('todos', temp)
-// 		}
-// 	}
-
-// 	componentDidMount() {
-// 		const temp = localStorage.getItem('todos')
-// 		const loadedTodos = JSON.parse(temp)
-// 		if (loadedTodos) {
-// 			this.setState({
-// 				todos: loadedTodos,
-// 			})
-// 		}
-// 	}
 
 // 	componentWillUnmount() {
 // 		console.log('Cleaning up...')
