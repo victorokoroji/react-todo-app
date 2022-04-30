@@ -7,23 +7,7 @@ import InputTodo from './components/InputTodo'
 import { v4 as uuid } from 'uuid'
 class App extends Component {
 	state = {
-		todos: [
-			{
-				id: uuid(),
-				title: 'Setup development environment',
-				completed: true,
-			},
-			{
-				id: uuid(),
-				title: 'Develop website and add content',
-				completed: false,
-			},
-			{
-				id: uuid(),
-				title: 'Deploy to live server',
-				completed: false,
-			},
-		],
+		todos: [],
 	}
 
 	handleChange = id => {
@@ -56,6 +40,8 @@ class App extends Component {
 		this.setState({
 			todos: [...this.state.todos, newTodo],
 		})
+
+		localStorage.setItem('todos', JSON.stringify(this.state.todos))
 	}
 
 	setUpdate = (updatedTitle, id) => {
@@ -72,12 +58,10 @@ class App extends Component {
 		}))
 	}
 
-	handleUpdatedDone = event => {
-		if (event.key === 'Enter') {
-			this.setState({ editing: false })
-		}
+	componentDidMount() {
+		const todos = JSON.parse(localStorage.getItem('todos'))
+		this.setState({ todos: todos })
 	}
-
 	render() {
 		return (
 			<div className='container'>

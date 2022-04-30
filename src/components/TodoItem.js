@@ -14,6 +14,12 @@ export class TodoItem extends Component {
 		})
 	}
 
+	handleUpdatedDone = event => {
+		if (event.key === 'Enter') {
+			this.setState({ editing: false })
+		}
+	}
+
 	render() {
 		const { todo, handlePropsChange, deleteTodoProps, setUpdate } = this.props
 		const { completed, id, title } = todo
