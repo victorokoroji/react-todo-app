@@ -1,9 +1,9 @@
 import './App.css'
 
 import React, { Component } from 'react'
-import Header from './components/Header'
-import TodoList from './components/TodoList'
-import InputTodo from './components/InputTodo'
+import Header from './functionBased/components/Header'
+import TodoList from './functionBased/components/TodoList'
+import InputTodo from './functionBased/components/InputTodo'
 import { v4 as uuid } from 'uuid'
 class App extends Component {
 	state = {
@@ -40,8 +40,6 @@ class App extends Component {
 		this.setState({
 			todos: [...this.state.todos, newTodo],
 		})
-
-		localStorage.setItem('todos', JSON.stringify(this.state.todos))
 	}
 
 	setUpdate = (updatedTitle, id) => {
@@ -58,10 +56,27 @@ class App extends Component {
 		}))
 	}
 
-	componentDidMount() {
-		const todos = JSON.parse(localStorage.getItem('todos'))
-		this.setState({ todos: todos })
+	componentDidUpdate(prevProps, prevState) {
+		if (prevState.todos !== this.state.todos) {
+			const temp = JSON.stringify(this.state.todos)
+			localStorage.setItem('todos', temp)
+		}
 	}
+
+	componentDidMount() {
+		const temp = localStorage.getItem('todos')
+		const loadedTodos = JSON.parse(temp)
+		if (loadedTodos) {
+			this.setState({
+				todos: loadedTodos,
+			})
+		}
+	}
+
+	componentWillUnmount() {
+		console.log('Cleaning up...')
+	}
+
 	render() {
 		return (
 			<div className='container'>
