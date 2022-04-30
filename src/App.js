@@ -58,6 +58,20 @@ class App extends Component {
 		})
 	}
 
+	setUpdate = (id, title) => {
+		this.setState(prevState => ({
+			todos: prevState.todos.map(todo => {
+				if (todo.id === id) {
+					return {
+						...todo,
+						title,
+					}
+				}
+				return todo
+			}),
+		}))
+	}
+
 	render() {
 		return (
 			<div className='container'>
@@ -68,6 +82,7 @@ class App extends Component {
 						todos={this.state.todos}
 						handlePropsChange={this.handleChange}
 						deleteTodoProps={this.delTodo}
+						setUpdate={this.setUpdate}
 					/>
 				</div>
 			</div>

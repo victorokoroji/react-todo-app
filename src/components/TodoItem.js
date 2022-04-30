@@ -14,9 +14,8 @@ export class TodoItem extends Component {
 		})
 	}
 
-
 	render() {
-		const { todo, handlePropsChange, deleteTodoProps } = this.props
+		const { todo, handlePropsChange, deleteTodoProps, setUpdate } = this.props
 		const { completed, id, title } = todo
 
 		let viewMode = {}
@@ -28,16 +27,17 @@ export class TodoItem extends Component {
 			editMode.display = 'none'
 		}
 
-			const completedStyle = {
-				fontStyle: 'italic',
-				color: '#595959',
-				opacity: 0.4,
-				textDecoration: 'line-through',
-			}
+		const completedStyle = {
+			fontStyle: 'italic',
+			color: '#595959',
+			opacity: 0.4,
+			textDecoration: 'line-through',
+		}
+
 		return (
 			<div>
 				<li className={styles.item}>
-					<div onDoubleClick={this.handleEditing}>
+					<div onDoubleClick={this.handleEditing} style={viewMode}>
 						<Input
 							type='checkbox'
 							name='checkbox'
@@ -55,9 +55,7 @@ export class TodoItem extends Component {
 						style={editMode}
 						className={styles.textInput}
 						value={title}
-						onChange={e => {
-							this.props.setUpdate(e.target.value, id)
-						}}
+						onChange={e => setUpdate(e.target.value, id)}
 						onKeyDown={this.handleUpdatedDone}
 					/>
 				</li>
