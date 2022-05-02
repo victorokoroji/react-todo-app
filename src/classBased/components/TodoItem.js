@@ -56,8 +56,9 @@ export class TodoItem extends Component {
 						</Button>
 						<span style={completed ? completedStyle : null}>{title}</span>
 					</div>
-					<input
+					<Input
 						type='text'
+						name='text'
 						style={editMode}
 						className={styles.textInput}
 						value={title}

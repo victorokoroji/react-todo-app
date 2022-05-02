@@ -1,87 +1,24 @@
-import React, { useState, useEffect } from 'react'
-import { Route } from 'react-router-dom'
+import React from 'react'
+import { Routes, Route } from 'react-router-dom'
 import Navbar from './functionBased/components/Navbar'
 import './App.css'
-import Header from './functionBased/components/Header'
-import { v4 as uuid } from 'uuid'
-import TodoList from './functionBased/components/TodoList'
-import InputTodo from './functionBased/components/InputTodo'
 import About from './pages/About'
 import NotMatch from './pages/NotMatch'
+import Homepage from './pages/Homepage'
+import SinglePage from './pages/SinglePage'
 
 const App = () => {
-	const [todos, setTodos] = useState(getInitialTodos())
-
-	const handleChange = id => {
-		setTodos(prevState => {
-			prevState.map(todo => {
-				if (todo.id === id) {
-					return {
-						...todo,
-						completed: !todo.completed,
-					}
-				}
-				return todo
-			})
-		})
-	}
-
-	const addTodoItem = title => {
-		const newTodo = {
-			id: uuid(),
-			title: title,
-			completed: false,
-		}
-		setTodos([...todos, newTodo])
-	}
-
-	const delTodo = id => {
-		setTodos([...todos.filter(todo => todo.id !== id)])
-	}
-
-	const setUpdate = (updatedTitle, id) => {
-		setTodos(
-			todos.map(todo => {
-				if (todo.id === id) {
-					todo.title = updatedTitle
-				}
-				return todo
-			}),
-		)
-	}
-
-	function getInitialTodos() {
-		const savedTodos = JSON.parse(localStorage.getItem('todos'))
-		return savedTodos || []
-	}
-
-	useEffect(() => {
-		localStorage.setItem('todos', JSON.stringify(todos))
-	}, [todos])
 
 	return (
 		<>
 			<Navbar />
-			<Route exact path='/'>
-				<div className='container'>
-					<div className='inner'>
-						<Header />
-						<InputTodo addTodoProps={addTodoItem} />
-						<TodoList
-							todos={todos}
-							handlePropsChange={handleChange}
-							deleteTodoProps={delTodo}
-							setUpdate={setUpdate}
-						/>
-					</div>
-				</div>
-			</Route>
-			<Route path='/about' component={<About />}>
-				<About />
-			</Route>
-			<Route path='*'>
-				<NotMatch />
-			</Route>
+			<Routes>
+				<Route exact path='/' element={<Homepage />} />
+				<Route path='about' element={<About />}>
+					<Route path=':slug' element={<SinglePage />} />
+				</Route>
+				<Route path='*' element={<NotMatch />} />
+			</Routes>
 		</>
 	)
 }
