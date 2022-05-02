@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Route } from 'react-router-dom'
 import './App.css'
 import Header from './functionBased/components/Header'
 import { v4 as uuid } from 'uuid'
@@ -56,18 +57,28 @@ const App = () => {
 	}, [todos])
 
 	return (
-		<div className='container'>
-			<div className='inner'>
-				<Header />
-				<InputTodo addTodoProps={addTodoItem} />
-				<TodoList
-					todos={todos}
-					handlePropsChange={handleChange}
-					deleteTodoProps={delTodo}
-					setUpdate={setUpdate}
-				/>
-			</div>
-		</div>
+		<>
+			<Route exact path='/'>
+				<div className='container'>
+					<div className='inner'>
+						<Header />
+						<InputTodo addTodoProps={addTodoItem} />
+						<TodoList
+							todos={todos}
+							handlePropsChange={handleChange}
+							deleteTodoProps={delTodo}
+							setUpdate={setUpdate}
+						/>
+					</div>
+				</div>
+			</Route>
+			<Route path='/about'>
+				<About />
+			</Route>
+			<Route path='*'>
+				<NotMatch />
+			</Route>
+		</>
 	)
 }
 

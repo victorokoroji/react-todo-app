@@ -18,7 +18,7 @@ const InputTodo = ({ addTodoProps }) => {
 		e.preventDefault()
 		if (InputTitle.title.trim()) {
 			addTodoProps(InputTitle.title)
-			setInputText({
+			setTitle({
 				title: '',
 			})
 		} else {
