@@ -7,7 +7,7 @@ const InputTodo = ({ addTodoProps }) => {
 		title: '',
 	})
 
-	const handleInput = () => {
+	const handleInput = (e) => {
 		setTitle({
 			...InputTitle,
 			[e.target.name]: e.target.value,
@@ -34,7 +34,7 @@ const InputTodo = ({ addTodoProps }) => {
 				placeholder='Add Todo...'
 				name='title'
 				value={InputTitle}
-				onChange={handleInput}
+				onChange={(e) => handleInput}
 			/>
 			<Button type='submit' className='input-submit'>
 				Submit

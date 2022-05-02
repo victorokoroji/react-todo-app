@@ -3,6 +3,7 @@ import './App.css'
 import Header from './functionBased/components/Header'
 import { v4 as uuid } from 'uuid'
 import TodoList from './functionBased/components/TodoList'
+import InputTodo from './functionBased/components/InputTodo'
 
 const App = () => {
 	const [todos, setTodos] = useState(getInitialTodos())
@@ -13,7 +14,7 @@ const App = () => {
 				if (todo.id === id) {
 					return {
 						...todo,
-						completed: !completed,
+						completed: !todo.completed,
 					}
 				}
 				return todo
@@ -71,10 +72,3 @@ const App = () => {
 }
 
 export default App
-
-// 	componentWillUnmount() {
-// 		console.log('Cleaning up...')
-// 	}
-// }
-
-// export default App

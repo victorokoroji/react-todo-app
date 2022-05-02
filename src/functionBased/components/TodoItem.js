@@ -4,7 +4,7 @@ import Input from './Input'
 import styles from './TodoItem.module.css'
 import { FaTrash } from 'react-icons/fa'
 
-const TodoItem = ({ todo, handleChangeProps, deleteTodoProps }) => {
+const TodoItem = ({ todo, handleChangeProps, deleteTodoProps, setUpdate }) => {
 	const { completed, id, title } = todo
 
 	const [editing, setEditing] = useState(false)
@@ -54,9 +54,7 @@ const TodoItem = ({ todo, handleChangeProps, deleteTodoProps }) => {
 				style={editMode}
 				className={styles.textInput}
 				value={title}
-				onChange={e => {
-					props.setUpdate(e.target.value, id)
-				}}
+				onChange={e => setUpdate(e.target.value, id)}
 				onKeyDown={handleUpdatedDone}
 			/>
 		</li>
