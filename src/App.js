@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import { Route } from 'react-router-dom'
-import Navbar from './Navbar'
+import Navbar from './functionBased/components/Navbar'
 import './App.css'
 import Header from './functionBased/components/Header'
 import { v4 as uuid } from 'uuid'
 import TodoList from './functionBased/components/TodoList'
 import InputTodo from './functionBased/components/InputTodo'
+import About from './pages/About'
+import NotMatch from './pages/NotMatch'
 
 const App = () => {
 	const [todos, setTodos] = useState(getInitialTodos())
@@ -74,7 +76,7 @@ const App = () => {
 					</div>
 				</div>
 			</Route>
-			<Route path='/about' component={About}>
+			<Route path='/about' component={<About />}>
 				<About />
 			</Route>
 			<Route path='*'>
