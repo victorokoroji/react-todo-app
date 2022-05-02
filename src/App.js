@@ -74,7 +74,7 @@ const App = () => {
 					</div>
 				</div>
 			</Route>
-			<Route path='/about'>
+			<Route path='/about' component={About}>
 				<About />
 			</Route>
 			<Route path='*'>
