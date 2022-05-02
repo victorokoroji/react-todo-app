@@ -18,19 +18,19 @@ const Navbar = () => {
 		},
 	]
 
-  const [navbarOpen, setNavbarOpen] = useState(false)
-  
-  const handleToggle = () => {
+	const [navbarOpen, setNavbarOpen] = useState(false)
+
+	const handleToggle = () => {
 		setNavbarOpen(prevState => !prevState)
-  }
-  
-  const closeMenu = () => {
+	}
+
+	const closeMenu = () => {
 		setNavbarOpen(false)
 	}
 
 	return (
 		<nav className='navBar'>
-			<Button type="button" onClick={handleToggle}>
+			<Button type='button' onClick={handleToggle}>
 				{navbarOpen ? (
 					<MdClose style={{ color: '#fff', width: '40px', height: '40px' }} />
 				) : (
@@ -43,9 +43,8 @@ const Navbar = () => {
 						<li key={link.id}>
 							<NavLink
 								to={link.path}
-								activeClassName='active-link'
+								className={navlink => (navlink.isActive ? 'active-link' : '')}
 								onClick={() => closeMenu()}
-								exact
 							>
 								{link.text}
 							</NavLink>
