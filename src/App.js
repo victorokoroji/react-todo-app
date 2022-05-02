@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Route } from 'react-router-dom'
+import Navbar from './Navbar'
 import './App.css'
 import Header from './functionBased/components/Header'
 import { v4 as uuid } from 'uuid'
@@ -58,6 +59,7 @@ const App = () => {
 
 	return (
 		<>
+			<Navbar />
 			<Route exact path='/'>
 				<div className='container'>
 					<div className='inner'>
