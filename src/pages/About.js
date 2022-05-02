@@ -1,23 +1,20 @@
 import React from 'react'
-import { Link, useMatch, Route } from 'react-router-dom'
-import SinglePage from './SinglePage'
+import { Link, useLocation} from 'react-router-dom'
 
 const About = () => {
-	const { url, path } = useMatch()
+	const location = useLocation()
+	const { pathname } = location
 
 	return (
 		<div className='about__content'>
 			<ul className='about__list'>
 				<li>
-					<Link to={`${url}/about-app`}>About App</Link>
+					<Link to={`${pathname}/about-app`}>About App</Link>
 				</li>
 				<li>
-					<Link to={`${url}/about-author`}>About Author</Link>
+					<Link to={`${pathname}/about-author`}>About Author</Link>
 				</li>
 			</ul>
-			<Route path={`${path}/:slug`}>
-				<SinglePage />
-			</Route>
 		</div>
 	)
 }
