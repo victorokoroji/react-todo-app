@@ -1,8 +1,13 @@
 import React, { useState, useEffect } from 'react'
+import { Route } from 'react-router-dom'
+import Navbar from './functionBased/components/Navbar'
 import './App.css'
 import Header from './functionBased/components/Header'
 import { v4 as uuid } from 'uuid'
 import TodoList from './functionBased/components/TodoList'
+import InputTodo from './functionBased/components/InputTodo'
+import About from './pages/About'
+import NotMatch from './pages/NotMatch'
 
 const App = () => {
 	const [todos, setTodos] = useState(getInitialTodos())
@@ -13,7 +18,7 @@ const App = () => {
 				if (todo.id === id) {
 					return {
 						...todo,
-						completed: !completed,
+						completed: !todo.completed,
 					}
 				}
 				return todo
@@ -55,26 +60,30 @@ const App = () => {
 	}, [todos])
 
 	return (
-		<div className='container'>
-			<div className='inner'>
-				<Header />
-				<InputTodo addTodoProps={addTodoItem} />
-				<TodoList
-					todos={todos}
-					handlePropsChange={handleChange}
-					deleteTodoProps={delTodo}
-					setUpdate={setUpdate}
-				/>
-			</div>
-		</div>
+		<>
+			<Navbar />
+			<Route exact path='/'>
+				<div className='container'>
+					<div className='inner'>
+						<Header />
+						<InputTodo addTodoProps={addTodoItem} />
+						<TodoList
+							todos={todos}
+							handlePropsChange={handleChange}
+							deleteTodoProps={delTodo}
+							setUpdate={setUpdate}
+						/>
+					</div>
+				</div>
+			</Route>
+			<Route path='/about' component={<About />}>
+				<About />
+			</Route>
+			<Route path='*'>
+				<NotMatch />
+			</Route>
+		</>
 	)
 }
 
 export default App
-
-// 	componentWillUnmount() {
-// 		console.log('Cleaning up...')
-// 	}
-// }
-
-// export default App
